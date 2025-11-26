@@ -28,5 +28,31 @@ public class App {
         for (Employe itEmp : societe.rechercherParDepartement("IT")) {
             System.out.println(itEmp);
         }
+
+        Departement dIT = new Departement("IT");
+        Departement dRH = new Departement("RH");
+
+        AffectationHashMap affect = new AffectationHashMap();
+        affect.ajouterEmployeDepartement(e1, dIT);
+        affect.ajouterEmployeDepartement(e2, dRH);
+        affect.ajouterEmployeDepartement(e3, dIT);
+
+        System.out.println("Affichages des affectations :");
+        affect.afficherEmployesEtDepartements();
+
+        System.out.println("\nTentative d'affecter e1  un autre departement (RH) :");
+
+        System.out.println("\nListe des employs (map) :");
+        affect.afficherEmployes();
+
+        System.out.println("\nListe des départements (map) :");
+        affect.afficherDepartements();
+
+        affect.supprimerEmployeEtDepartement(e3, dIT);
+        affect.afficherEmployesEtDepartements();
+
+        for (java.util.Map.Entry<Employe, Departement> entry : affect.trierMap().entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
     }
 }

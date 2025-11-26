@@ -76,8 +76,12 @@ public class Employe implements Comparable<Employe> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employe employe = (Employe) o;
-        return id == employe.id && Objects.equals(nom, employe.nom) && Objects.equals(prenom, employe.prenom);
+        return id == employe.id;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
   
 }
